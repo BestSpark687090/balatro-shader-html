@@ -50,7 +50,7 @@ float vort_speed = 0.5;
 vec4 colour_2 = vec4(0,0.6156862745098,1,1);
 vec4 colour_1 = vec4(0.9907843137255,0.37254901960784,0.3333333333333,1);
 float mid_flash = 0.0;
-float vort_offset;
+float vort_offset = 0.0;
 vec2 uv;
 //float randTime = 1765656902.0;
 
@@ -60,7 +60,7 @@ out vec4 out_color;
 #define BLACK 0.6*vec4(79./255.,99./255., 103./255., 1./0.6)
 
 vec4 effect( vec2 screen_coords ) {
-  vort_offset = mod((2.0*90.15315131*u_time), 100000.0);
+  //vort_offset = mod((2.0*90.15315131*u_time), 100000.0);
   //Convert to UV coords (0-1) and floor for pixel effect
   MY_HIGHP_OR_MEDIUMP float pixel_size = length(u_resolution)/PIXEL_SIZE_FAC;
   MY_HIGHP_OR_MEDIUMP vec2 uv = ((floor(screen_coords.xy*(1./pixel_size))*pixel_size - 0.5*u_resolution)/length(u_resolution));
