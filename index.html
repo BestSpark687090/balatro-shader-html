@@ -48,7 +48,7 @@ uniform float u_time;
 uniform vec2 u_resolution;
 float vort_speed = 0.5;
 vec4 colour_2 = vec4(0,0.6156862745098,1,1);
-vec4 colour_1 = vec4(0.9907843137255,0.37254901960784,0.3333333333333,1);
+vec4 colour_1 = vec4(0.99607843137255,0.37254901960784,0.3333333333333,1);
 float mid_flash = 0.0;
 float vort_offset = 0.0;
 vec2 uv;
@@ -67,7 +67,7 @@ vec4 effect( vec2 screen_coords ) {
   MY_HIGHP_OR_MEDIUMP float uv_len = length(uv);
   //Adding in a center swirl, changes with u_time
   MY_HIGHP_OR_MEDIUMP float speed = float(u_time*vort_speed);//
-  MY_HIGHP_OR_MEDIUMP float new_pixel_angle = (atan(uv.y, uv.x) + (2.2 + 0.4f*min(6.0,speed))*uv_len - 1.0 -  speed*0.05f - min(6.0,speed)*speed*0.02 + vort_offset);
+  MY_HIGHP_OR_MEDIUMP float new_pixel_angle = (atan(-uv.y, uv.x) + (2.2 + 0.4f*min(6.0,speed))*uv_len - 1.0 -  speed*0.05f - min(6.0,speed)*speed*0.02 + vort_offset);
   MY_HIGHP_OR_MEDIUMP vec2 mid = (u_resolution/length(u_resolution))/2.;
   MY_HIGHP_OR_MEDIUMP vec2 sv = vec2((uv_len * cos(new_pixel_angle) + mid.x), (uv_len * sin(new_pixel_angle) + mid.y)) - mid;
   //Now add the smoke effect to the swirled UV
